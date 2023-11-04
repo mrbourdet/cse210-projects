@@ -2,12 +2,13 @@ using System;
 using System.ComponentModel.Design;
 using System.Diagnostics;
 
-//  Menu Options
-//      1. Start Breathing Activity
-//      2. Start Reflecting Activity
-//      3. Start Listing Activity
-//      4. Quit
-//  Select a choice from the menu: 
+// --------------------------------------
+// Project:     Mindfulness
+// Author:      Michael Bourdet
+// Class:       CSE210 - Programming with Classes
+// Section:     A5
+// Teacher:     Christopher Pitts
+// -------------------------------------- 
 class Program
 {
     static void Main(string[] args)

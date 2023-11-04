@@ -5,7 +5,7 @@ using System.Diagnostics;
 public class GratitudeActivity :Activity
 {
     private List<string> _gratitudePrompts = new List<string>
-    {   //Gratitude prompts taken from:
+    {   //Gratitude prompts taken (with gratitude) from:
         //https://awbw.org/programs/windows-of-gratitude-workshop-series/
         " --- What does it mean to you to look at your life through a lens of gratitude? ---\n",
         " --- List five things you're grateful for that your senses allow you to experience. ---\n",

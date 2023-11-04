@@ -10,11 +10,7 @@ public class Activity //Base Class for BreathingActivity, ReflectingActivity, an
 
     public Activity ()
     {
-        // _activityName = "";
-        // _activityDescription = "";
-        // _activityDuration = 0;
-        // _welcomeString = "";
-        // _startTime = DateTime.Now;
+
     }
   
 
