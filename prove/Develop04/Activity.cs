@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Specialized;
-using System.Globalization;
 using System.Diagnostics;
 
-public class Activity
+public class Activity //Base Class for BreathingActivity, ReflectingActivity, and ListingActivity
 {
     protected string _activityName;
     protected string _activityDescription;
@@ -13,11 +10,11 @@ public class Activity
 
     public Activity ()
     {
-        _activityName = "";
-        _activityDescription = "";
-        _activityDuration = 10;
-        _welcomeString = "";
-        _startTime = DateTime.Now;
+        // _activityName = "";
+        // _activityDescription = "";
+        // _activityDuration = 0;
+        // _welcomeString = "";
+        // _startTime = DateTime.Now;
     }
   
 
@@ -38,9 +35,9 @@ public class Activity
     {
         return _activityDescription;
     }
-    public void SetWelcomeString(string activityName)
+    public void SetWelcomeString()
     {
-        _welcomeString = $"Welcome to the {activityName} Activity";
+        _welcomeString = $"Welcome to the {_activityName} Activity"+"\n";
     }
     public string GetWelcomeString()
     {
@@ -48,26 +45,30 @@ public class Activity
     }
     public int GetSessionDuration()
     {
-        Console.WriteLine($"How long, in seconds, would you like for your session?");
+        Console.Write($"How long, in seconds, would you like for your session? ");
         int input = Int32.Parse(Console.ReadLine());
         return input;
     }
     public void CountdownTimer(int seconds)
     {
+        Console.CursorVisible = false; //Hide the cursor for a smoother animation
         for (int i = seconds; i > 0; i--)
         {
             Console.Write(i);
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }
+        Console.CursorVisible = true; //Show cursor when finished
     }
     public void DotsTimer(int seconds)
     {
+        Console.CursorVisible = false; //Hide the cursor for a smoother animation
         for (int i = seconds; i > 0; i--)
         {
             Console.Write(".");
             Thread.Sleep(1000);
         }
+        Console.CursorVisible = true; //Show cursor when finished
     }
         public void Spinner(int seconds)
     {
@@ -85,12 +86,12 @@ public class Activity
         DateTime endTime = startTime.AddSeconds(seconds);
 
         int i = 0;
-
+        Console.CursorVisible = false; //Hide the cursor for a smoother animation
         while (DateTime.Now < endTime)
         {
             string s = animationStrings[i];
             Console.Write(s);
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.Write("\b \b");
 
             i++;
@@ -100,32 +101,26 @@ public class Activity
                 i = 0;
             }
         }
+        Console.CursorVisible = true; //Show cursor when finished
     }
-    protected Stopwatch sw = new Stopwatch();
-    protected double lastFrame;
-    public double deltaTime()
-    {
-        TimeSpan ts = this.sw.Elapsed;
-        double firstFrame = ts.TotalMilliseconds;
-        double dt = firstFrame - lastFrame;
-        this.lastFrame = ts.TotalMilliseconds;
-        return dt;
-    }
+    
     public void GetReadyToStart ()
     {
         Console.Clear();
-        Console.WriteLine("Get ready...");
-        Spinner(8);
+        Console.Write("Get ready...");
+        CountdownTimer(5);
         Console.WriteLine();
     }
     public void WellDone()
     {
-        Console.WriteLine("Well done!!");
+        Console.Write("Well done!!");
         Spinner(5);
+        Console.WriteLine();
     }
     public void EndMessage()
     {
-        Console.WriteLine($"You have completed another {_activityDuration} seconds of the {_activityName} activity.");
+        Console.Write($"You have completed another {_activityDuration} seconds of the {_activityName} activity.");
         Spinner(5);
+        Console.WriteLine();
     }
 }
