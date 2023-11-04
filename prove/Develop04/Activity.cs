@@ -119,7 +119,10 @@ public class Activity //Base Class for BreathingActivity, ReflectingActivity, an
     }
     public void EndMessage()
     {
-        Console.Write($"You have completed another {_activityDuration} seconds of the {_activityName} activity.");
+        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write($"You have completed {_activityDuration} seconds of the {_activityName} activity.");
+        Console.ResetColor();
         Spinner(5);
         Console.WriteLine();
     }

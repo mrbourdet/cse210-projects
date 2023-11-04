@@ -5,7 +5,8 @@ using System.Diagnostics;
 public class GratitudeActivity :Activity
 {
     private List<string> _gratitudePrompts = new List<string>
-    {
+    {   //Gratitude prompts taken from:
+        //https://awbw.org/programs/windows-of-gratitude-workshop-series/
         " --- What does it mean to you to look at your life through a lens of gratitude? ---\n",
         " --- List five things you're grateful for that your senses allow you to experience. ---\n",
         " --- Think about the beauty of ordinary moments you appreciate in life. Describe how they keep you grounded. ---\n",
@@ -80,7 +81,11 @@ public class GratitudeActivity :Activity
         } 
         Console.WriteLine("\nTime's up!");
         string bufStr = String.Join<string>("", buf);
-        Console.WriteLine($"Here's what you typed: {bufStr}");
+        
+        Console.Write("Here's what you typed: ");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($" {bufStr}<end>");
+        Console.ResetColor();
         Spinner(10);
         WellDone();
         EndMessage();
