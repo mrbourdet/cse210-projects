@@ -14,7 +14,7 @@ public class ListingActivity :Activity
     };
     private int _randomListingIndex; 
     private Stopwatch _sw = new Stopwatch();
-    private double _lastFrame;
+    private double _lastFrame = 0.0;
     public ListingActivity() :base()
         {
             SetActivityName("listing");
@@ -28,12 +28,12 @@ public class ListingActivity :Activity
         _randomListingIndex = rand.Next(0, _listingPrompts.Count);
         return _listingPrompts[_randomListingIndex];
     }
-    public double deltaTime()
+    public double deltaTime() //Will return the time since the timer started, and then between calls to deltaTime.
     {
-        TimeSpan ts = _sw.Elapsed;
-        double firstFrame = ts.TotalSeconds;
-        double dt = firstFrame - _lastFrame;
-        _lastFrame = ts.TotalSeconds;
+        TimeSpan ts = _sw.Elapsed; //Put time since timer was started
+        double firstFrame = ts.TotalSeconds; //Set the first frame to the total seconds elapsed
+        double dt = firstFrame - _lastFrame; //Subtract the last (previous) elapsed time (first time last frame = 0)
+        _lastFrame = ts.TotalSeconds;  //Set the last frame to the elapsed seconds
         return dt;
     }
     public void Listing()
