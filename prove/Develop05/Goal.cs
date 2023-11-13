@@ -7,10 +7,10 @@ public class Goal
     protected string _goalType;
     protected string _goalName;
     protected string _goalDesc;
-    protected int _points;
+    protected int _goalPoints;
     protected bool _goalAttained;
     protected bool _goalComplete;
-    protected List<_goal> _goals = new List<string>;
+    protected List<Goal> _goals = new List<Goal>();
     protected string _typePrompt;
 
     public Goal ()
@@ -28,45 +28,59 @@ public class Goal
         _goalName = goalName;
         _goalDesc = goalDesc;
         _goalPoints = goalPoints;
-        _goalAttained = false;
         _goalComplete = false; 
     }
-    public GoalType(string) {get; set;}
-    public GoalName(string) {get; set;} 
-    public GoalDesc(string) {get; set;} 
-    public Points(int) {get; set;} 
-    public GoalComplete(bool) {get; set;} 
 
-    public void CreateGoalSubMenu
+    public void SetGoalType(string goalType) 
     {
-        string response;
-        Console.WriteLine("The types of goals are:\n");
-        Console.WriteLine("  1. Simple Goal");
-        Console.WriteLine("  2. Eternal Goal");
-        Console.WriteLine("  3. Checklist Goal");
-
-
-        Console.Write("Which type of goal would you like to create? ");
-        switch (Console.ReadLine())
-        {
-        case "1" :
-            return true;
-        case "2":
-            return true;
-        case "3":
-            return true;
-        default:
-            return false;
-        }
+        _goalType = goalType;
     }
-
-
-
-    What is the name of your goal?
+    public string GetGoalType() 
+    {
+        return _goalType;
     }
+    public void GetGoalName(string goalName) 
+    {
+        _goalName = goalName;
+    } 
+    public string SetGoalName() 
+    {
+        return _goalName;
+    } 
+    public void SetGoalDesc(string goalDesc) 
+    {   
+        _goalDesc = goalDesc;
+    } 
+    public string GetGoalDesc() 
+    {   
+        return _goalDesc;
+    } 
+    public void SetGoalPoints(int goalPoints) 
+    {
+        _goalPoints = goalPoints;
+    } 
+    public int GetGoalPoints() 
+    {
+        return _goalPoints;
+    } 
+    public void SetGoalComplete(bool goalComplete) 
+    {
+        _goalComplete = goalComplete;
+    } 
+    public bool GetGoalComplete()
+    {
+        return _goalComplete;
+    } 
+
+    //What is the name of your goal?
     public void ListGoals()
     {
+        Console.WriteLine("Test");
 
+        foreach (Goal goal in _goals)
+        {
+            Console.WriteLine(goal);
+        }
     }
     public void SaveGoals()
     {
@@ -76,24 +90,65 @@ public class Goal
     {
 
     }
-    public void ecordEvent()
+
+    public virtual void CreateNewGoal()
     {
-
-    }
-
-    public abstract CreateNewGoal()
-    {
-
+        Goal g1 = new Goal();
+        Console.Write("What is the name of your goal? ");
+        g1._goalName = Console.ReadLine();
+        Console.Write("What is a short description of it? ");
+        g1._goalDesc = Console.ReadLine();
+        Console.Write("What is the amount of points associated with this goal? ");
+        g1._goalPoints = int.Parse(Console.ReadLine());
+        _goalComplete = false;
+        _goals.Add(g1);
     } 
-    public abstract CalculateReward()
+    public virtual void CalculateReward()
     {
 
     }
-    public abstract RecordEvent()
+    public virtual void RecordEvent()
     {
 
     }
 
+    public void ShowSubMenu()
+    {
+        bool showSubMenu = true;
+            while (showSubMenu) //loop until false
+            {
+                showSubMenu = SubMenu();
+            }
+        static bool SubMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Menu Options");
+            Console.WriteLine("    1. Create New Simple Goal");
+            Console.WriteLine("    2. Create New Eternal Goal");
+            Console.WriteLine("    3. Create New Checklist Goal");
+            Console.WriteLine("    4. Back to Main Menu");
 
+            Console.WriteLine("Select a choice from the menu: ");
 
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    SimpleGoal s = new SimpleGoal(); //Instantiate Simple Goal
+                    s.CreateNewGoal();
+                    return true;
+                case "2":
+                    // EternalGoal e = new EternalGoal(); //Instantiate Eternal Goal
+                    // e.CreateNewGoal();
+                    return true;
+                case "3":
+                    // CheklistGoal c = new ChecklistGoal(); //Instantiate Checklist Goal
+                    // c.CreateNewGoal();
+                    return true;
+                case "4": //Ends menu by returning true
+                    return false;
+                default:
+                    return true;
+            }
+        }
+    }
 }
