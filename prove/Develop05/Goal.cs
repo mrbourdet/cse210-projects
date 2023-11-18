@@ -66,8 +66,26 @@ public class Goal
     }
     public static void SaveGoals()
     {
-        Console.Write("What is the name of the file you want to save? ");
-        string fileName = Console.ReadLine();
+        string fileName = "";
+        while (1==1)
+        {
+            Console.Write("What is the name of the file you want to save? ");
+            fileName = Console.ReadLine();
+            if (File.Exists(fileName))
+            {
+                Console.WriteLine("That file already exists. Overwrite? y/n");
+                string answer = Console.ReadLine();
+                if (answer.ToLower() == "y")
+                {
+                    break;
+                }
+                else
+                {
+                    continue;
+                } 
+            }
+            break;
+        }
 
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
@@ -83,9 +101,22 @@ public class Goal
         _goals.Clear();
         _goalsToRecord.Clear();
         _goalsToSave.Clear();
+        string goalComplete = "false";
         string xlMark = " ";
-        Console.Write("What is the name of the file you want to load? ");
-        string fileName = Console.ReadLine();
+        string fileName = "";
+        while (1==1)
+        {
+            Console.Write("What is the name of the file you want to load? ");
+            fileName = Console.ReadLine();
+            if (!File.Exists(fileName))
+            {
+                Console.WriteLine("That file does not exist. Choose another file.");
+                Console.Write("Press any key to continue.");
+                Console.ReadLine();
+                continue;
+            }
+            break;
+        }
 
         string[] lines = System.IO.File.ReadAllLines(fileName);
         _totalPoints = int.Parse(lines[0]);
@@ -99,17 +130,23 @@ public class Goal
             string goalName = parts[1];
             string goalDesc = parts[2];
             int goalPoints = int.Parse(parts[3]);
-            if (goalType == "Simple" || goalType == "Eternal")
+            if (goalType == "Simple")
             {
-                bool goalComplete = bool.Parse(parts[4]);
-
-                if (goalComplete)
+                if (parts[4]=="true")
                 {
                     xlMark = "X";
+                    goalComplete = "true";
                 }
+
                 _goals.Add($"{_goals.Count() + 1}. [{xlMark}] {goalName}: {goalDesc}");
                 _goalsToRecord.Add($"{_goals.Count()}. {goalName}");
-                _goalsToSave.Add($"{goalType},{goalName},{goalDesc},{goalPoints}, {goalComplete}");
+                _goalsToSave.Add($"{goalType},{goalName},{goalDesc},{goalPoints},{goalComplete}");
+            }
+            else if (goalType == "Eternal")
+            {
+                _goals.Add($"{_goals.Count() + 1}. [ ] {goalName}: {goalDesc}");
+                _goalsToRecord.Add($"{_goals.Count()}. {goalName}");
+                _goalsToSave.Add($"{goalType},{goalName},{goalDesc},{goalPoints},false");
             }
             else
             {
@@ -138,11 +175,10 @@ public class Goal
         Console.Write("What is the amount of points associated with this goal? ");
         _goalPoints = int.Parse(Console.ReadLine());
         string xMark = "";
-        if (_goalComplete) {xMark="X";} else {xMark=" ";
+        if (_goalComplete) {xMark="X";} else {xMark=" ";}
         _goals.Add($"{_goals.Count() + 1}. [{xMark}] {_goalName}: {_goalDesc}");
         _goalsToRecord.Add($"{_goals.Count()}. {_goalName}");
         _goalsToSave.Add($"{_goalType},{_goalName},{_goalDesc},{_goalPoints}, {_goalComplete}");
-        //_goalz.Add ("_goalType:", _goalType);
         _goalComplete = false;
     } 
     public virtual void RecordEvent(string goalType, int goalIndex)
