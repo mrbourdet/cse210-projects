@@ -8,14 +8,13 @@ public class EternalGoal :Goal
     {
 
     }
-
-    public EternalGoal (string goalType, string goalName, string goalDesc, int goalPoints) :base()
+public override void RecordEvent(string goalType, int goalIndex)
     {
-        _goalType = goalType;
-        _goalName = goalName;
-        _goalDesc = goalDesc;
-        _goalPoints = goalPoints;
-        _goalAttained = false;
-        _goalComplete = false; 
+        string goalToEdit = _goalsToSave[goalIndex];
+        string[] parts = goalToEdit.Split(",");
+        _totalPoints += int.Parse(parts[3]);
+
+        Console.WriteLine($"Congatulations! You have earned {parts[3]} points!");
     }
+        
 }

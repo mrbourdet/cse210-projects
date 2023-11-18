@@ -1,0 +1,4 @@
+900
+Simple,Give a talk,Give a talk at sacrament meeting when asked,100,true
+Eternal,Read the scriptures,Read the scriptures every day,10,False
+Checklist,Go to the temple,Go to the temple and perform any ordinance there,50,500,6,6
