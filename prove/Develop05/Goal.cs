@@ -7,15 +7,17 @@ using System.Collections.Generic;
 
 public class Goal
 {
-    protected static List<string> _goals = new List<string>();
-    protected static List<string> _goalsToRecord = new List<string>();
-    protected static List<string> _goalsToSave = new List<string>();
-    protected static int _totalPoints = 0;
+
     protected string _goalType;
     protected string _goalName;
     protected string _goalDesc;
     protected int _goalPoints;
     protected bool _goalComplete;
+
+    protected static List<string> _goals = new List<string>();
+    protected static List<string> _goalsToRecord = new List<string>();
+    protected static List<string> _goalsToSave = new List<string>();
+    protected static int _totalPoints = 0;
 
     public Goal ()
     {

@@ -1,0 +1,4 @@
+950
+Simple,Give a talk,Give a talk when asked, 100,true
+Eternal,Read the scriptures,Read the scriptures every day,50, False
+Checklist,Go to the temple,Go to the temple and perform an ordinance,100,500,3,3

@@ -3,14 +3,6 @@ using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-// Console.Clear();
-// Console.WriteLine("Menu Options");
-// Console.WriteLine("    1. Create New Simple Goal");
-// Console.WriteLine("    2. Create New Eternal Goal");
-// Console.WriteLine("    3. Create New Checklist Goal");
-// Console.WriteLine("    4. Back to Main Menu");
-
-// Console.WriteLine("Select a choice from the menu: ");
 class Program
 {
     static void Main(string[] args)
