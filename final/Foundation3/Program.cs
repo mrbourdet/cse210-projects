@@ -5,6 +5,8 @@ class Program
     static void Main(string[] args)
     {
         Console.Clear();
+        Console.WriteLine("Program 3: Inheritance with Event Planning");
+        Console.WriteLine("---------------------------------------------------------------------------------");
 
         // Create the venue addresses
         Address address1 = new Address("Twenty & Creek", "2050 Creek Rd", "Sandy", "UT", "84093", "USA"); //OutdoorActivity
@@ -13,6 +15,7 @@ class Program
 
         Reception reception1 = new Reception("Reception", "Olaf & Elsa Anderson Wedding Reception", "A wedding reception for Olaf and Elsa.  Brunch will be served.", "Saturday, March 16, 2024", "10:00 a.m.", address3, "anderson031624@receptions.com");
         // New Reception
+
         Console.WriteLine("Reception");
         Console.WriteLine("Standard");
         Console.WriteLine($"Title:\t\t{reception1.GetTitle()}\nDescription:\t{reception1.GetDescription()}\nDate & Time:\t{reception1.GetDate()} at {reception1.GetTime()}\nLocation:\n{reception1.GetAddress()}\n");
@@ -47,6 +50,8 @@ class Program
         Console.WriteLine($"Title:\t\t{outdoorGathering1.GetTitle()}\nDescription:\t{outdoorGathering1.GetDescription()}\nDate & Time:\t{outdoorGathering1.GetDate()} at {outdoorGathering1.GetTime()}\nLocation:\n{outdoorGathering1.GetAddress()}\n\nWeather Statement:\t{outdoorGathering1.GetWeather()}\n");
         Console.WriteLine("Short                                                                              ");
         Console.WriteLine($"Event Type:\tOutdoorGathering\nTitle:\t\t{outdoorGathering1.GetTitle()}\nDate:\t\t{outdoorGathering1.GetDate()}\n");
+
+
     }
     /* 
     Standard - Lists the title, description, date, time, and address.
