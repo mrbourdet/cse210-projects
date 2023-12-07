@@ -2,32 +2,32 @@ using System;
 
 public class Swimming :Activity
 {
-    private int _laps;
+    private double _laps;
 
-    public Swimming(string activityType,string date, int lengthInMinutes, int laps) :base(activityType, date, lengthInMinutes)
+    public Swimming(string activityType, string date, int lengthInMinutes, double laps) :base(activityType, date, lengthInMinutes)
     {
         _laps = laps;
     }
 
 
-    public void SetLaps(int laps)
+    public void SetLaps(double laps)
     {
         _laps = laps;
     }
-    public int GetLaps()
+    public double GetLaps()
     {
         return _laps;
     }
 
-    public override double Distance()
+    public override double Distance() //km
     {
         return _laps * 50 / 1000;
     }
-    public override double Speed()
+    public override double Speed() //kph
     {
-        return (Distance() / GetLengthInMinutes()) * 60;
+        return Distance() / GetLengthInMinutes() * 60;
     }
-    public override double Pace()
+    public override double Pace() //min per km
     {
         return 60 / Speed();
     }
