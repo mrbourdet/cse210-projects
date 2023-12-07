@@ -17,4 +17,9 @@ public class OutdoorGathering :Event
     {
         return _weather;
     }
+    public void DisplayFullOutdoorGatheringMessage()
+    {
+        Console.WriteLine("Full ----------------------------------------------------------------------------");
+        Console.WriteLine($"Title:\t\t{_title}\nDescription:\t{_description}\nDate & Time:\t{_date} at {_time}\nLocation:\n{this.GetAddress()}\n\nWeather Statement:\t{_weather}\n");
+    }
 }

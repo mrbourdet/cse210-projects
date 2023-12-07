@@ -27,4 +27,9 @@ public class Lecture :Event
     {
         return _capacity;
     }
+    public void DisplayFullLectureMessage()
+    {
+        Console.WriteLine("Full ----------------------------------------------------------------------------");
+        Console.WriteLine($"Title:\t\t{_title}\nDescription:\t{_description}\nDate & Time:\t{_date} at {_time}\nLocation:\n{this.GetAddress()}\n\nThe speaker will be: {_speaker}\nSeating is limited to {_capacity} attendees.\n\n");
+    }
 }

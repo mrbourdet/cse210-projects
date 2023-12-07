@@ -63,6 +63,16 @@ public class Event
     }
     public string GetAddress()
     {
-        return $"{_address.GetVenueName()}\n{_address.GetStreetAddress()}\n{_address.GetCity()}, {_address.GetStateProvince()} {_address.GetPostalCode()}\n{_address.GetCountry()}";
+        return $"\t\t{_address.GetVenueName()}\n\t\t{_address.GetStreetAddress()}\n\t\t{_address.GetCity()}, {_address.GetStateProvince()} {_address.GetPostalCode()}\n\t\t{_address.GetCountry()}";
     } 
+    public void DisplayStandardMessage()
+    {
+        Console.WriteLine("Standard ------------------------------------------------------------------------");
+        Console.WriteLine($"Title:\t\t{_title}\nDescription:\t{_description}\nDate & Time:\t{_date} at {_time}\nLocation:\n{this.GetAddress()}\n");
+    }
+    public void DisplayShortMessage()
+    {
+        Console.WriteLine("Short ---------------------------------------------------------------------------");
+        Console.WriteLine($"Event Type:\t{_eventType}\nTitle:\t\t{_title}\nDate:\t\t{_date}\n");
+    }
 }

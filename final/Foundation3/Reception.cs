@@ -17,11 +17,10 @@ public class Reception :Event
     {
         return _emailRSVP;
     }
-    public new string GetAddress() 
-    //added new modifier to get rid of compiler warning CS0108.  I don't fully understand the error.
-    // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs0108 
-    // https://valeriosevilla.com/2018/01/02/some-polymorphism-csharp/
+    
+    public void DisplayFullReceptionMessage()
     {
-        return $"{_address.GetVenueName()}\n{_address.GetStreetAddress()}\n{_address.GetCity()}, {_address.GetStateProvince()} {_address.GetPostalCode()}\n{_address.GetCountry()}";
+        Console.WriteLine("Full  ---------------------------------------------------------------------------");
+        Console.WriteLine($"Title:\t\t{_title}\nDescription:\t{_description}\nDate & Time:\t{_date} at {_time}\nLocation:\n{this.GetAddress()}\n\nToRSVP, send response to: {_emailRSVP}\n");
     }
 }
