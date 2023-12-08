@@ -27,8 +27,4 @@ public class Swimming :Activity
     {
         return Distance() / GetLengthInMinutes() * 60;
     }
-    public override double Pace() //min per km
-    {
-        return 60 / Speed();
-    }
 }

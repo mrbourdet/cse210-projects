@@ -26,8 +26,4 @@ public class Running :Activity
     {
         return (_distanceInKm / GetLengthInMinutes()) * 60;
     }
-    public override double Pace()
-    {
-        return 60 / Speed();
-    }
 }

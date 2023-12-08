@@ -40,7 +40,10 @@ public abstract class Activity
 
     public abstract double Distance();
     public abstract double Speed();
-    public abstract double Pace();
+    public double Pace() // min per km
+    {
+        return 60 / Speed();
+    }
     public string Summary()
     {
         return $"{_date} {_activityType} ({_lengthInMinutes} min): Distance {Distance()} km, Speed: {Speed()} kph, Pace: {Pace()} min per km";

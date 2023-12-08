@@ -27,8 +27,4 @@ public class Cycling :Activity
     {
         return _speedInKph;
     }
-    public override double Pace() // min per km
-    {
-        return 60 / _speedInKph;
-    }
 }
